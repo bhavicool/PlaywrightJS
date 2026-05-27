@@ -14,3 +14,12 @@ test("Verify Application Title", async function({ page })
     //expect("Google").toBe(appTitle);
     await expect(page).toHaveTitle("Google")
 });
+
+test("Playing with Frames", async function({ page })
+{
+    await page.goto("https://docs.oracle.com/javase/8/docs/api/")  
+   
+    const myAppFrame=await page.frameLocator("//frame[@name='packageListFrame']")
+
+    await myAppFrame.locator("//a[text()='java.applet']").click();
+});
